@@ -1,4 +1,4 @@
-# monkey  get banana Prolog
+# Prolog monkey get banana
 
 ## 概要
 
@@ -15,16 +15,17 @@ Prologを用いた猿とバナナの問題を解くプログラムの制作
 ## 問題設定
 
 問題設定 — 猿とバナナの問題 — :
-初期状態 state( atdoor, onfloor, atwindow, hasnot)
-猿はド ア付近 (atdoor) の床の上 (onfloor) におり ， 台が窓付近にあり (atwindow)， バナナを手にしていない (hasnot)
-猿が部屋の中央 (middle) で台の上に登ればバナナを 手にする ことができる (バナナは部屋の中央に吊るされている)
-canget(S1) は状態 S1 から 猿がバナナを 手にする こ と ができ れば真
-述語は move, canget の 2 種類， 関数は walk, push の 2 種類
-canget( S1) :- move( S1, M, S2), canget( S2). は， 状態 S1 で行動 M を選択して状態 S2 に遷移し， S2から猿がバナナ を手にすることができるならば canget( S1)は真となる
+
+- 初期状態`state( atdoor, onfloor, atwindow, hasnot)`
+- 猿はドア付近`atdoor`の床の上`onfloor`におり，台が窓付近にあり`atwindow`，バナナを手にしていない`hasnot`
+- 猿が部屋の中央`middle`で台の上に登ればバナナを手にすることができる(バナナは部屋の中央に吊るされている)
+- `canget(S1)`は状態`S1`から猿がバナナを手にすることができれば真
+- 述語は`move`,`canget`,`state`の3種類，関数は`walk`,`push`の2種類
+- `canget(S1) :- move(S1, M, S2), canget(S2).` は，状態`S1`で行動 `M`を選択して状態`S2`に遷移し，`S2`から猿がバナナを手にすることができるならば`canget(S1)`は真となる
 
 ## 課題
 
-以下の Prolog プログラムで質問 canget( state( atdoor, onfloor, atwindow, hasnot)). を与えると true が出ることなく無限ループに陥る．これを節の順番を変えるだけで true と判定するプログラムに書き換えよ．
+以下の Prolog プログラムで質問 `canget( state( atdoor, onfloor, atwindow, hasnot)).` を与えると true が出ることなく無限ループに陥る．これを節の順番を変えるだけで`true`と判定するプログラムに書き換えよ．
 
 ```
 move( state( P1, onfloor, B, H), walk(P1,P2), state( P2, onfloor, B, H)).
