@@ -1,6 +1,10 @@
-move( state( P1, onfloor, B, H), walk(P1,P2), state( P2, onfloor, B, H)).
-move( state( P1, onfloor, P1, H), push(P1, P2), state( P2, onfloor, P2, H)).
-move( state( P, onfloor, P, H), climb, state( P, onbox, P, H)).
 move( state( middle, onbox, middle, hasnot), grasp, state( middle, onbox, middle, has)).
+% 掴む
+move( state( P, onfloor, P, H), climb, state( P, onbox, P, H)).
+% 台に登る
+move( state( P1, onfloor, P1, H), push(P1, P2), state( P2, onfloor, P2, H)).
+% 台を移動させる (台と猿が同時に移動)
+move( state( P1, onfloor, B, H), walk(P1,P2), state( P2, onfloor, B, H)).
+% 猿のみ移動する
 canget( state( P, C, B, has)).
 canget( S1) :- move( S1, M, S2), canget( S2).
